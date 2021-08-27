@@ -9,6 +9,7 @@
         type="info"
         round
         size="small"
+        to="/search"
         >搜索</van-button
       >
     </van-nav-bar>
@@ -66,6 +67,8 @@
 import { getUserChannels } from "@/api/user.js";
 import ArticleList from "./components/article-list";
 import ChannelEdit from "./components/channel-edit";
+import { mapState } from "vuex";
+import { getItem } from "@/utils/storage";
 
 export default {
   name: "HomeIndex",
