@@ -97,7 +97,9 @@ export default {
   },
   computed: { ...mapState(["user"]) },
   watch: {},
-  created() {},
+  created() {
+    this.loadCurrentUser();
+  },
   mounted() {},
   methods: {
     onLogout() {

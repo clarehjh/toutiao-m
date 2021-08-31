@@ -5,10 +5,26 @@ import axios from "axios";
 // 在非组件模块中获取 store 必须通过这种方式
 // 这里单独加载 store，和在组件中 this.$store 一个东西
 import store from "@/store/";
+import jsonBig from "json-bigint";
 
 // import router from "@/router/";
 const request = axios.create({
-  baseURL: "http://ttapi.research.itcast.cn/" // 基础路径
+  baseURL: "http://ttapi.research.itcast.cn/", // 基础路径
+
+  // transformResponse 允许自定义原始的响应数据（字符串）
+  transformResponse: [
+    function(data) {
+      try {
+        // 如果转换成功则返回转换的数据结果
+        return jsonBig.parse(data);
+      } catch (err) {
+        // 如果转换失败，则包装为统一数据格式并返回
+        return {
+          data
+        };
+      }
+    }
+  ]
 });
 // Add a request interceptor请求拦截器
 request.interceptors.request.use(
