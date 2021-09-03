@@ -48,12 +48,12 @@ const routes = [
     // 参考文档：https://router.vuejs.org/zh/guide/essentials/passing-props.html
     props: true
   },
-  // {
-  //   path: "/user/profile",
-  //   name: "user-profile",
-  //   component: () => import("@/views/user-profile"),
-  //   meta: { requiresAuth: false }
-  // },
+  {
+    path: "/user/profile",
+    name: "user-profile",
+    component: () => import("@/views/user-profile"),
+    meta: { requiresAuth: false }
+  },
   {
     path: "/user/chat",
     name: "user-chat",
