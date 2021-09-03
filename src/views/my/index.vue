@@ -10,7 +10,9 @@
           :src="currentUser.photo"
         />
         <div class="name" slot="title">{{ currentUser.name }}</div>
-        <van-button class="update-btn" size="small" round>编辑资料</van-button>
+        <van-button class="update-btn" size="small" round to="/user/profile"
+          >编辑资料</van-button
+        >
       </van-cell>
       <van-grid class="data-info" :border="false">
         <van-grid-item class="data-info-item">
@@ -72,7 +74,7 @@
     </van-grid>
 
     <van-cell title="消息通知" is-link to="/" />
-    <van-cell class="mb-4" title="小智同学" is-link to="/" />
+    <van-cell class="mb-4" title="小智同学" is-link to="/user/chat" />
     <van-cell
       v-if="user"
       class="logout-cell"
