@@ -112,9 +112,14 @@ export default {
         this.$toast.success("登录成功");
         // 将后端返回的用户登录状态（token等数据）放到 Vuex 容器中
         this.$store.commit("setUser", data.data);
+
+        // 清除layout中的缓存，让他重新渲染
+        this.$store.commit("removeCachePage", "LayoutIndex");
         // 登录成功，跳转回原来页面
         // this.$router.back() // 先用这种方式，但是它不太好，有问题
-        this.$router.push(this.$route.query.redirect || "/");
+        // this.$router.push(this.$route.query.redirect || "/");
+        const redirect = this.$route.query.redirect || "/";
+        this.$router.replace(redirect);
       } catch (err) {
         console.log(err);
         this.$toast.fail("登录失败，手机号或验证码错误");

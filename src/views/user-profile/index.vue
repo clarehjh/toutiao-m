@@ -166,6 +166,7 @@ export default {
       this.isEditPhotoShow = true;
 
       // 为了解决相同文件不触发 change 事件，所以在这里手动的清空 file 的 value
+      // file-input选择同一文件不会触发change事件
       this.$refs.file.value = "";
     }
   }

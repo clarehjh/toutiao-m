@@ -1,6 +1,10 @@
 <template>
   <div class="layout-container">
-    <router-view></router-view>
+    <!-- layout 的子路由出口，或者说是二级路由 -->
+    <keep-alive>
+      <router-view />
+    </keep-alive>
+    <!-- /子路由出口 -->
     <!--底部tabbar-->
     <van-tabbar v-model="active" route>
       <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
@@ -24,7 +28,9 @@ export default {
   computed: {},
   watch: {},
   created() {},
-  mounted() {},
+  mounted() {
+    this.$store.commit("addCachePage", "LayoutIndex");
+  },
   methods: {}
 };
 </script>
