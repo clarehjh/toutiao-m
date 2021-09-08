@@ -21,13 +21,16 @@
             <div class="text">头条</div>
           </div>
         </van-grid-item>
-        <van-grid-item class="data-info-item">
+        <van-grid-item class="data-info-item" :to="`/user/${user.id}/follow`">
           <div slot="text" class="text-wrap">
             <div class="count">{{ currentUser.follow_count }}</div>
             <div class="text">关注</div>
           </div>
         </van-grid-item>
-        <van-grid-item class="data-info-item">
+        <van-grid-item
+          class="data-info-item"
+          :to="`/user/${user.id}/follow?tab=followers`"
+        >
           <div slot="text" class="text-wrap">
             <div class="count">{{ currentUser.fans_count }}</div>
             <div class="text">粉丝</div>
@@ -99,8 +102,12 @@ export default {
   },
   computed: { ...mapState(["user"]) },
   watch: {},
-  created() {
-    this.loadCurrentUser();
+  created() {},
+
+  activated() {
+    if (this.user) {
+      this.loadCurrentUser();
+    }
   },
   mounted() {},
   methods: {

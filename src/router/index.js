@@ -57,19 +57,35 @@ const routes = [
     component: () => import("@/views/article/"),
     // 将动态路由参数映射到组件的 props 中，无论是访问还是维护性都很方便
     // 参考文档：https://router.vuejs.org/zh/guide/essentials/passing-props.html
+    //  article-item组件跳转路由
+    //  :to="{
+    //   name: 'article',
+    //   params: {
+    //     articleId: article.art_id
+    //   }
+    // }"
     props: true,
     meta: { requiresAuth: false }
   },
   {
+    // 用户资料
     path: "/user/profile",
     name: "user-profile",
     component: () => import("@/views/user-profile"),
     meta: { requiresAuth: false }
   },
   {
+    // 小智同学
     path: "/user/chat",
     name: "user-chat",
     component: () => import("@/views/user-chat"),
+    meta: { requiresAuth: true }
+  },
+  {
+    // 用户关注/粉丝
+    path: "/user/:userId/follow",
+    component: () => import("@/views/user-follow"),
+    props: true,
     meta: { requiresAuth: true }
   }
 ];
